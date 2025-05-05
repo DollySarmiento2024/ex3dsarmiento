@@ -1,6 +1,6 @@
 <?php
 
-class Connection()
+class Connection
 {
     private  $host;
     private  $userName;
@@ -11,12 +11,12 @@ class Connection()
 
     public function __construct()
     {
-        $this->connectÇ();
+        $this->connect();
     }
 
     public function __destruct()
     {
-        if($this->conn){
+        if ($this->conn) {
             $this->conn = null;
         }
     }
@@ -32,12 +32,12 @@ class Connection()
         $this->host = $config['host'];
         $this->userName = $config['userName'];
         $this->password = $config['password'];
-        $this->password = $config['db'];
-        $this->passw
-
+        $this->db = $config['db'];
+        $this->conn = new PDO("mysql:host=$this->host;dbname=$this->db", $this->userName, $this->password);
     }
 
+    public function getConn()
+    {
+        return $this->conn;
+    }
 }
-
-
-?>
