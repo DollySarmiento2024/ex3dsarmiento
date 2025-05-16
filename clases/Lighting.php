@@ -50,10 +50,10 @@ class Lighting extends Connection
     public function getAllLampsFilter()
     {
         $lamps = [];
-        $zone_id = $this->getCurrentFilter();
+        $zoneId = $this->getCurrentFilter();
         $query = "SELECT lamps.lamp_id, lamps.lamp_name, lamp_on, lamp_models.model_part_number,lamp_models.model_wattage, zones.zone_name 
         FROM lamps INNER JOIN lamp_models ON lamps.lamp_model=lamp_models.model_id 
-        INNER JOIN zones ON lamps.lamp_zone = zones.zone_id WHERE zones.zone_id = $zone_id 
+        INNER JOIN zones ON lamps.lamp_zone = zones.zone_id WHERE zones.zone_id = $zoneId 
         ORDER BY lamps.lamp_id";
         $result = $this->getConn()->query($query);
         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
@@ -79,21 +79,21 @@ class Lighting extends Connection
         }
         foreach ($lamps as $lamp) {
             //var_dump($row);
-            $lamp_on = $lamp->getLampOn();
-            $lamp_id = $lamp->getLampId();
-            $lamp_name = $lamp->getLampName();
-            $model_wattage = $lamp->getModelWattage();
-            $zone_name = $lamp->getLampZone();
+            $lampOn = $lamp->getLampOn();
+            $lampId = $lamp->getLampId();
+            $lampName = $lamp->getLampName();
+            $modelWattage = $lamp->getModelWattage();
+            $zoneName = $lamp->getLampZone();
 
-            if ($lamp_on == 0) { //lampara apagada -> podemos cambiar estado a "on"
+            if ($lampOn == 0) { //lampara apagada -> podemos cambiar estado a "on"
                 echo "<div class='element off'>";
-                echo "<h4><a href='changestatus.php?lamp_id=$lamp_id&status=on'><img src='img/bulb-icon-off.png'></a>$lamp_name</h4>";
+                echo "<h4><a href='changestatus.php?lampId=$lampId&status=on'><img src='img/bulb-icon-off.png'></a>$lampName</h4>";
             } else { //lampara encendida -> podemos cambiar estado a "off"
                 echo "<div class='element on'>";
-                echo "<h4><a href='changestatus.php?lamp_id=$lamp_id&status=off'><img src='img/bulb-icon-on.png'></a>$lamp_name</h4>";
+                echo "<h4><a href='changestatus.php?lampId=$lampId&status=off'><img src='img/bulb-icon-on.png'></a>$lampName</h4>";
             }
-            echo "<h1>$model_wattage</h1>";
-            echo "<h4>$zone_name</h4>";
+            echo "<h1>$modelWattage</h1>";
+            echo "<h4>$zoneName</h4>";
             echo "</div>";
         }
     }
@@ -148,9 +148,9 @@ class Lighting extends Connection
         echo "<option value='all'>All</option>";
 
         foreach ($zones as $row) {
-            $zone_id = $row["zone_id"];
-            $zone_name = $row["zone_name"];
-            echo "<option value=$zone_id>$zone_name</option>";
+            $zoneId = $row["zone_id"];
+            $zoneName = $row["zone_name"];
+            echo "<option value=$zoneId>$zoneName</option>";
         }
     }
 }

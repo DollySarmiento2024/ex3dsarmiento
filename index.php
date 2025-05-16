@@ -1,4 +1,5 @@
 <?php
+// ALUMNA: Dolly Fernanda Sarmiento Quintana
 
 require_once "autoload.php";
 $lighting = new Lighting();

@@ -4,72 +4,72 @@
 
 class Lamp extends Connection
 {
-    private $lamp_id;
-    private $lamp_name;
-    private $lamp_on;
-    private $lamp_model;
-    private $model_wattage;
-    private $zone_name;
+    private $lampId;
+    private $lampName;
+    private $lampOn;
+    private $lampModel;
+    private $modelWattage;
+    private $zoneName;
 
     public function __construct(array $data)
     {
-        $this->lamp_id = $data['lamp_id'];
-        $this->lamp_name = $data['lamp_name'];
-        $this->lamp_on = $data['lamp_on'];
-        $this->lamp_model = $data['model_part_number'];
-        $this->model_wattage = $data['model_wattage'];
-        $this->zone_name = $data['zone_name'];
+        $this->lampId = $data['lamp_id'];
+        $this->lampName = $data['lamp_name'];
+        $this->lampOn = $data['lamp_on'];
+        $this->lampModel = $data['model_part_number'];
+        $this->modelWattage = $data['model_wattage'];
+        $this->zoneName = $data['zone_name'];
     }
 
     /**
-     * Get the value of lamp_id
+     * Get the value of lampId
      */
     public function getLampId()
     {
-        return $this->lamp_id;
+        return $this->lampId;
     }
 
 
     /**
-     * Get the value of lamp_name
+     * Get the value of lampName
      */
     public function getLampName()
     {
-        return $this->lamp_name;
+        return $this->lampName;
     }
 
 
     /**
-     * Get the value of lamp_on
+     * Get the value of lampOn
      */
     public function getLampOn()
     {
-        return $this->lamp_on;
+        return $this->lampOn;
     }
 
 
     /**
-     * Get the value of lamp_model
+     * Get the value of lampModel
      */
     public function getLampModel()
     {
-        return $this->lamp_model;
+        return $this->lampModel;
     }
 
     /**
-     * Get the value of model_wattage
+     * Get the value of modelWattage
      */
     public function getModelWattage()
     {
-        return $this->model_wattage;
+        return $this->modelWattage;
     }
 
 
     /**
-     * Get the value of zone_name
+     * Get the value of zoneName
      */
     public function getLampZone()
     {
-        return $this->zone_name;
+        return $this->zoneName;
     }
 }
